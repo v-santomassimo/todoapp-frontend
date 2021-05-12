@@ -8,11 +8,6 @@ class TodoContainer extends Component {
     showPopup: false,
   };
 
-  constructor() {
-    super();
-    this.state = this.showPopup;
-  }
-
   handleShowPopup() {
     if (this.showPopup === false) {
       this.setState({ showPopup: true });
@@ -22,8 +17,8 @@ class TodoContainer extends Component {
   render() {
     let popup;
 
-    if (this.showPopup === true) {
-      popup += (
+    if (this.state.showPopup === true) {
+      popup = (
         <div class="modal">
           <div class="modal-background"></div>
           <div class="modal-card">

@@ -7,12 +7,12 @@ class Navbar extends Component {
       <nav className="navbar" role="navigation" aria-label="main navigation">
         <div className="navbar-brand">
           <span className="tag is-primary is-large">To Do List</span>
+          <label className="navbar-item">
+            <span class="tag is-primary is-light is-medium">
+              {this.todayDate()}
+            </span>
+          </label>
         </div>
-        <label className="navbar-brand-date">
-          <span class="tag is-primary is-light is-medium">
-            {this.todayDate()}
-          </span>
-        </label>
       </nav>
     );
   }
