@@ -5,6 +5,13 @@ import "./navbar.css";
 
 class TodoContainer extends Component {
   state = {
+    items: [
+      { id: 0, description: "Fare la spesa", date: new Date() },
+      { id: 1, description: "Andare dal dentista", date: new Date() },
+      { id: 2, description: "Appuntamento con Teresa", date: new Date() },
+      { id: 3, description: "Comprare il detersivo", date: new Date() },
+      { id: 4, description: "Fare il bucato", date: new Date() },
+    ],
     showPopup: false,
   };
 
@@ -53,30 +60,13 @@ class TodoContainer extends Component {
         <table className="table is-fullwidth mt-4">
           <tr>
             <td>
-              <Item></Item>
-            </td>
-            <td>
-              <Item></Item>
-            </td>
-            <td>
-              <Item></Item>
-            </td>
-            <td>
-              <Item></Item>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <Item></Item>
-            </td>
-            <td>
-              <Item></Item>
-            </td>
-            <td>
-              <Item></Item>
-            </td>
-            <td>
-              <Item></Item>
+              {this.state.items.map((item) => (
+                <Item
+                  key={item.id}
+                  description={item.description}
+                  date={item.date}
+                />
+              ))}
             </td>
           </tr>
         </table>

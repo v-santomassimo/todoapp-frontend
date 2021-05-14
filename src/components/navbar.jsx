@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./navbar.css";
+import "../App.css";
 
 class Navbar extends Component {
   render() {
@@ -8,7 +8,7 @@ class Navbar extends Component {
         <div className="navbar-brand">
           <span className="tag is-primary is-large">To Do List</span>
           <label className="navbar-item">
-            <span class="tag is-primary is-light is-medium">
+            <span className="tag is-primary is-light is-medium">
               {this.todayDate()}
             </span>
           </label>
@@ -53,8 +53,6 @@ class Navbar extends Component {
       mesi[todayDate.getMonth()] +
       " " +
       todayDate.getFullYear();
-
-    console.log(todayDate);
 
     return todayDate;
   }

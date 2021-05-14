@@ -1,13 +1,14 @@
 import React, { Component } from "react";
-import "./navbar.css";
+import "../App.css";
 
 class Item extends Component {
-  state = {
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit lorem ipsum dolor sit amet, consectetur adipiscing elit",
-    isCompleted: false,
-    //array di oggetti ToDo;
-  };
+  constructor(props) {
+    super();
+    this.state = {
+      description: "Fare la spesa",
+      date: new Date(),
+    };
+  }
 
   isCompletedMessage() {
     return (
@@ -19,25 +20,28 @@ class Item extends Component {
 
   render() {
     return (
-      <div className="notification is-primary is-light">
-        <button
-          className="delete"
-          onMouseOver={this.isCompletedMessage}
-        ></button>
-        {this.state.description}
-        {/*{this.state.date}*/}
-        <div className="field is-grouped mt-5">
-          <span></span>
-          <p className="control">
-            <button className="button is-primary is-outlined is-rounded is-small">
-              Modifica
-            </button>
-          </p>
-          <p className="control">
-            <button className="button is-danger is-outlined is-rounded is-small">
-              Cancel
-            </button>
-          </p>
+      <div className="level">
+        <div className="notification is-primary is-light">
+          <button
+            className="delete"
+            onMouseOver={() => console.log("onMouseover funziona")}
+          ></button>
+          {this.state.description}
+          {this.state.date}
+          <hr />
+          <div className="field is-grouped mt-5">
+            <span></span>
+            <p className="control">
+              <button className="button is-primary is-outlined is-rounded is-small">
+                Modifica
+              </button>
+            </p>
+            <p className="control">
+              <button className="button is-danger is-outlined is-rounded is-small">
+                Cancella
+              </button>
+            </p>
+          </div>
         </div>
       </div>
     );
