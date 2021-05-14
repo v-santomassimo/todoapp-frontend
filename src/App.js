@@ -1,18 +1,18 @@
-import { Component } from "react";
-import "./App.css";
-import Navbar from "./components/navbar";
-import Item from "./components/item";
+import { Component } from 'react';
+import './App.css';
+import Navbar from './components/navbar';
+import Item from './components/item';
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
       items: [
-        { id: 0, description: "Fare la spesa", date: new Date() },
-        { id: 1, description: "Andare dal dentista", date: new Date() },
-        { id: 2, description: "Appuntamento con Teresa", date: new Date() },
-        { id: 3, description: "Comprare il detersivo", date: new Date() },
-        { id: 4, description: "Fare il bucato", date: new Date() },
+        { id: 0, description: 'Fare la spesa', date: new Date() },
+        { id: 1, description: 'Andare dal dentista', date: new Date() },
+        { id: 2, description: 'Appuntamento con Teresa', date: new Date() },
+        { id: 3, description: 'Comprare il detersivo', date: new Date() },
+        { id: 4, description: 'Fare il bucato', date: new Date() },
       ],
       showPopup: false,
     };
@@ -38,9 +38,7 @@ class App extends Component {
               <p className="modal-card-title">Aggiungi To Do</p>
               <button className="delete" aria-label="close"></button>
             </header>
-            <section className="modal-card-body">
-              Sarò una form per aggiungere item.
-            </section>
+            <section className="modal-card-body">Sarò una form per aggiungere item.</section>
             <footer className="modal-card-foot">
               <button className="button is-success">Salva</button>
               <button className="button">Indietro</button>
@@ -53,24 +51,16 @@ class App extends Component {
       <>
         <Navbar />
         <div className="section">
-          <button
-            className="button is-primary is-rounded"
-            value="Click to Open Popup"
-            onClick={this.handleShowPopup}
-          >
+          <button className="button is-primary is-rounded" value="Click to Open Popup" onClick={this.handleShowPopup}>
             Aggiungi
           </button>
           {popup}
           <table className="table is-fullwidth mt-4">
             <tr>
               <td>
-                {this.state.items.map((item) => (
-                  <Item
-                    key={item.id}
-                    description={item.description}
-                    date={item.date}
-                  />
-                ))}
+                {this.state.items.map((item) => {
+                  return <Item key={item.id} todo={item} />;
+                })}
               </td>
             </tr>
           </table>

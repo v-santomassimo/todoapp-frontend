@@ -1,12 +1,11 @@
-import React, { Component } from "react";
-import "../App.css";
+import React, { Component } from 'react';
+import '../App.css';
 
 class Item extends Component {
   constructor(props) {
     super();
     this.state = {
-      description: "Fare la spesa",
-      date: new Date(),
+      todo: props.item,
     };
   }
 
@@ -22,24 +21,17 @@ class Item extends Component {
     return (
       <div className="level">
         <div className="notification is-primary is-light">
-          <button
-            className="delete"
-            onMouseOver={() => console.log("onMouseover funziona")}
-          ></button>
-          {this.state.description}
-          {this.state.date}
+          <button className="delete" onMouseOver={() => console.log('onMouseover funziona')}></button>
+          {this.state.todo.description}
+          {this.state.todo.date}
           <hr />
           <div className="field is-grouped mt-5">
             <span></span>
             <p className="control">
-              <button className="button is-primary is-outlined is-rounded is-small">
-                Modifica
-              </button>
+              <button className="button is-primary is-outlined is-rounded is-small">Modifica</button>
             </p>
             <p className="control">
-              <button className="button is-danger is-outlined is-rounded is-small">
-                Cancella
-              </button>
+              <button className="button is-danger is-outlined is-rounded is-small">Cancella</button>
             </p>
           </div>
         </div>
