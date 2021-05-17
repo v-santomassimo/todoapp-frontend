@@ -1,10 +1,10 @@
-import React, { Component } from "react";
-import "../App.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCalendar } from "@fortawesome/free-solid-svg-icons";
-import { faEdit } from "@fortawesome/free-solid-svg-icons";
-import { faTimes } from "@fortawesome/free-solid-svg-icons";
-import { faThumbsUp } from "@fortawesome/free-solid-svg-icons";
+import React, { Component } from 'react';
+import '../App.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCalendar } from '@fortawesome/free-solid-svg-icons';
+import { faEdit } from '@fortawesome/free-solid-svg-icons';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faThumbsUp } from '@fortawesome/free-solid-svg-icons';
 
 class Item extends Component {
   constructor(props) {
@@ -12,19 +12,23 @@ class Item extends Component {
     this.state = {
       todo: this.props.todo,
     };
+    this.handleToggle = this.handleToggle.bind(this);
+  }
+
+  handleToggle() {
+    // In questo modo setto is completed usando setState (buona prassi)
+    this.setState({
+      todo: {
+        ...this.state.todo,
+        isCompleted: true,
+      },
+    });
   }
 
   render() {
     return (
-      <div
-        toggle={this.state.todo.isCompleted}
-        className={
-          this.state.todo.isCompleted
-            ? "notification is-primary is-light"
-            : "notification is-warning is-light"
-        }
-        onClick={this.props.onToggle}
-      >
+      // Il toString perchè ho visto che dava errori la console
+      <div toggle={this.state.todo.isCompleted.toString()} className={this.state.todo.isCompleted ? 'notification is-primary is-light' : 'notification is-warning is-light'} onDoubleClick={this.handleToggle}>
         <div className="buttons is-grouped is-right">
           {this.state.todo.isCompleted ? (
             <h6 className="mr-5">
@@ -32,7 +36,7 @@ class Item extends Component {
               Completato!
             </h6>
           ) : (
-            ""
+            ''
           )}
           <button className="button is-primary is-outlined is-rounded is-small">
             <FontAwesomeIcon icon={faEdit} size="lg" />

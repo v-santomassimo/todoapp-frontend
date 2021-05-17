@@ -1,13 +1,13 @@
-import { Component } from "react";
-import "./App.css";
-import Navbar from "./components/Navbar";
-import Item from "./components/Item";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import { Component } from 'react';
+import './App.css';
+import Navbar from './components/Navbar';
+import Item from './components/Item';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
 //import { Modal, Button } from "react-bootstrap";
-import { Modal, Button } from "react-bulma-components";
+import { Modal, Button } from 'react-bulma-components';
 
-import "bootstrap/dist/css/bootstrap.min.css";
+import 'bootstrap/dist/css/bootstrap.min.css';
 //import "bulma//css/bulma.css";
 
 class App extends Component {
@@ -20,10 +20,6 @@ class App extends Component {
     };
     this.handleClose = () => this.setState({ showPopup: false });
     this.handleShow = () => this.setState({ showPopup: true });
-    this.handleToggle = () =>
-      this.setState(({ items }) => ({
-        items: { ...items, isCompleted: true },
-      }));
   }
 
   componentDidMount = () => {
@@ -32,31 +28,31 @@ class App extends Component {
         ...this.state.items,
         {
           id: 0,
-          description: "Fare la spesa",
+          description: 'Fare la spesa',
           date: new Date().toDateString(),
           isCompleted: false,
         },
         {
           id: 1,
-          description: "Andare dal dentista",
+          description: 'Andare dal dentista',
           date: new Date().toDateString(),
           isCompleted: false,
         },
         {
           id: 2,
-          description: "Appuntamento con Teresa",
+          description: 'Appuntamento con Teresa',
           date: new Date().toDateString(),
           isCompleted: false,
         },
         {
           id: 3,
-          description: "Comprare il detersivo",
+          description: 'Comprare il detersivo',
           date: new Date().toDateString(),
           isCompleted: false,
         },
         {
           id: 4,
-          description: "Fare il bucato",
+          description: 'Fare il bucato',
           date: new Date().toDateString(),
           isCompleted: false,
         },
@@ -79,26 +75,17 @@ class App extends Component {
                   <div className="field">
                     <label className="label">Descrizione</label>
                     <div className="control">
-                      <textarea
-                        className="textarea is-primary"
-                        placeholder="es. Andare dal dentista"
-                      ></textarea>
+                      <textarea className="textarea is-primary" placeholder="es. Andare dal dentista"></textarea>
                     </div>
                   </div>
                   <div className="field is-grouped">
                     <div className="control">
-                      <Button
-                        className="button is-primary is-rounded"
-                        onClick={this.handleClose}
-                      >
+                      <Button className="button is-primary is-rounded" onClick={this.handleClose}>
                         Aggiungi
                       </Button>
                     </div>
                     <div className="control">
-                      <Button
-                        className="button secondary is-rounded"
-                        onClick={this.handleClose}
-                      >
+                      <Button className="button secondary is-rounded" onClick={this.handleClose}>
                         Indietro
                       </Button>
                     </div>
@@ -111,11 +98,7 @@ class App extends Component {
           <Navbar />
 
           <div className="container">
-            <button
-              className="button is-primary is-rounded"
-              value="Click to Open Popup"
-              onClick={this.handleShow}
-            >
+            <button className="button is-primary is-rounded" value="Click to Open Popup" onClick={this.handleShow}>
               <FontAwesomeIcon icon={faPlus} className="mr-2" />
               Aggiungi
             </button>
@@ -123,11 +106,7 @@ class App extends Component {
               {this.state.items.map((item) => {
                 return (
                   <div className="col-lg-4 my-3">
-                    <Item
-                      key={item.id}
-                      todo={item}
-                      onToggle={this.handleToggle}
-                    />
+                    <Item key={item.id} todo={item} />
                   </div>
                 );
               })}
