@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faListAlt } from "@fortawesome/free-solid-svg-icons";
 import "../App.css";
 
 class Navbar extends Component {
@@ -6,7 +8,10 @@ class Navbar extends Component {
     return (
       <nav className="navbar" role="navigation" aria-label="main navigation">
         <div className="navbar-brand">
-          <span className="tag is-primary is-large">To Do List</span>
+          <span className="tag is-primary is-large">
+            <FontAwesomeIcon icon={faListAlt} className="mr-2" />
+            To Do List
+          </span>
           <label className="navbar-item">
             <span className="tag is-primary is-light is-medium">
               {this.todayDate()}

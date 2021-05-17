@@ -1,5 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital@1&display=swap");
 
+* {
+  font-family: "Montserrat", sans-serif;
+}
+
 .App {
   text-align: center;
 }
@@ -7,6 +11,10 @@
 .button {
   font-family: "Montserrat", sans-serif;
   margin-left: 6px;
+}
+
+.button-dx {
+  text-align: left;
 }
 
 .navbar .navbar-brand {
@@ -26,9 +34,9 @@
   width: 100%;
 }
 
-.table {
-  font-family: "Montserrat", sans-serif;
-  font-size: medium;
+p {
+  font-style: italic;
+  font-size: small;
 }
 
 .tag {
