@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
-import '../App.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCalendar } from '@fortawesome/free-solid-svg-icons';
-import { faEdit } from '@fortawesome/free-solid-svg-icons';
-import { faTimes } from '@fortawesome/free-solid-svg-icons';
-import { faThumbsUp } from '@fortawesome/free-solid-svg-icons';
+import React, { Component } from "react";
+import "../App.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCalendar } from "@fortawesome/free-solid-svg-icons";
+import { faEdit } from "@fortawesome/free-solid-svg-icons";
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
+import { faThumbsUp } from "@fortawesome/free-solid-svg-icons";
 
 class Item extends Component {
   constructor(props) {
@@ -16,27 +16,44 @@ class Item extends Component {
   }
 
   handleToggle() {
-    // In questo modo setto is completed usando setState (buona prassi)
-    this.setState({
-      todo: {
-        ...this.state.todo,
-        isCompleted: true,
-      },
-    });
+    if (this.state.todo.completed === false) {
+      // In questo modo setto is completed usando setState (buona prassi)
+      this.setState({
+        todo: {
+          ...this.state.todo,
+          completed: true,
+        },
+      });
+    } else {
+      this.setState({
+        todo: {
+          ...this.state.todo,
+          completed: false,
+        },
+      });
+    }
   }
 
   render() {
     return (
       // Il toString perchè ho visto che dava errori la console
-      <div toggle={this.state.todo.isCompleted.toString()} className={this.state.todo.isCompleted ? 'notification is-primary is-light' : 'notification is-warning is-light'} onDoubleClick={this.handleToggle}>
+      <div
+        toggle={this.state.todo.completed.toString()}
+        className={
+          this.state.todo.completed
+            ? "notification is-primary is-light"
+            : "notification is-warning is-light"
+        }
+        onDoubleClick={this.handleToggle}
+      >
         <div className="buttons is-grouped is-right">
-          {this.state.todo.isCompleted ? (
+          {this.state.todo.completed ? (
             <h6 className="mr-5">
               <FontAwesomeIcon icon={faThumbsUp} className="mx-2" size="lg" />
               Completato!
             </h6>
           ) : (
-            ''
+            ""
           )}
           <button className="button is-primary is-outlined is-rounded is-small">
             <FontAwesomeIcon icon={faEdit} size="lg" />
@@ -51,7 +68,7 @@ class Item extends Component {
           {this.state.todo.description}
           <p>
             <FontAwesomeIcon icon={faCalendar} className="mx-2" />
-            {this.state.todo.date}
+            {this.state.todo.creationDate}
           </p>
         </div>
       </div>
