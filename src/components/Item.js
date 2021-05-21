@@ -38,7 +38,7 @@ class Item extends Component {
     return (
       // Il toString perchè ho visto che dava errori la console
       <div
-        toggle={this.state.todo.completed.toString()}
+        toggle={this.state.todo.completed} //non posso mettere toString()
         className={
           this.state.todo.completed
             ? "notification is-primary is-light"
