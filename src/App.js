@@ -15,31 +15,40 @@ class App extends Component {
       items: [],
       showPopup: false,
       isLoaded: false,
-    };
-
-    this.handleClose = () => this.setState({ showPopup: false });
-    this.handleShow = () => this.setState({ showPopup: true });
-    this.handleChange = (event) => {
-      this.setState({ description: event.target.value });
-    };
-    this.handleSubmit = (event) => {
-      event.preventDefault(); //evita il comportamento di default di un evento;
-      const newItem = { description: this.state.description };
-
-      axios
-        .post("http://localhost:8080/vsan/todo-app/addToDo", newItem)
-        .then((response) => {
-          console.log(response);
-          console.log(response.data);
-          let newItems = this.state.items.push(newItem);
-          this.setState({
-            items: [...this.state.items, newItems],
-            //onSubmitClose: false,
-          });
-          this.handleClose();
-        });
+      description: "",
     };
   }
+
+  handleClose = () => this.setState({ showPopup: false });
+  handleShow = () => this.setState({ showPopup: true });
+  handleChange = (event) => {
+    this.setState({ description: event.target.value });
+  };
+  handleSubmit = (event) => {
+    event.preventDefault(); //evita il comportamento di default di un evento;
+    const newItem = { description: this.state.description };
+
+    axios
+      .post("http://localhost:8080/vsan/todo-app/addToDo", newItem)
+      .then((response) => {
+        console.log(response);
+        console.log(response.data);
+        this.setState({
+          items: [...this.state.items, response.data],
+          description: "",
+        });
+        this.handleClose();
+      });
+  };
+
+  handleDelete = (todoId) => {
+    axios
+      .delete("http://localhost:8080/vsan/todo-app/deleteToDo/" + todoId)
+      .then((response) => console.log(response.data));
+
+    const items = this.state.items.filter((t) => t.id !== todoId);
+    this.setState({ items: items });
+  };
 
   componentDidMount = () => {
     axios
@@ -74,7 +83,11 @@ class App extends Component {
                   <Modal.Card.Title>Aggiungi To Do</Modal.Card.Title>
                 </Modal.Card.Header>
                 <Modal.Card.Body>
-                  <form onSubmit={this.handleSubmit} onClose={this.handleClose}>
+                  <form
+                    id="todoForm"
+                    onSubmit={this.handleSubmit}
+                    onClose={this.handleClose}
+                  >
                     <div className="field">
                       <label className="label">Descrizione</label>
                       <div className="control">
@@ -84,24 +97,23 @@ class App extends Component {
                           name="description"
                           placeholder="es. Andare dal dentista"
                           onChange={this.handleChange}
-                          //value={this.state.description}
+                          value={this.state.description}
                         ></textarea>
                       </div>
                     </div>
                     <div className="field is-grouped">
-                      <div className="control">
-                        <Button
-                          type="submit"
-                          className="button is-primary is-rounded"
-                          //onClick={this.handleClose}
-                        >
-                          Aggiungi
-                        </Button>
-                      </div>
+                      <div className="control"></div>
                     </div>
                   </form>
                 </Modal.Card.Body>
                 <Modal.Card.Footer>
+                  <Button
+                    form="todoForm"
+                    type="submit"
+                    className="button is-primary is-rounded"
+                  >
+                    Aggiungi
+                  </Button>
                   <Button
                     className="button secondary is-rounded"
                     onClick={this.handleClose}
@@ -111,23 +123,17 @@ class App extends Component {
                 </Modal.Card.Footer>
               </Modal.Card>
             </Modal>
-
-            <div className="row">
-              {this.state.items.map((item, index) => {
-                return (
-                  <div className="col-lg-4 my-3">
-                    <Item key={index} todo={item} />
-                  </div>
-                );
-              })}
-            </div>
-            {/*Se non ci sono To Dos, mostro un messaggio:(però non funziona)}
-            {this.state.items > 0 ? (
+            {/* Se non ci sono To Dos, mostro un messaggio:(però non funziona)} */}
+            {this.state.items.length > 0 ? (
               <div className="row">
-                {this.state.items.map((item) => {
+                {this.state.items.map((item, index) => {
                   return (
                     <div className="col-lg-4 my-3">
-                      <Item key={item.id} todo={item} />
+                      <Item
+                        key={item.id}
+                        onDelete={this.handleDelete}
+                        todo={item}
+                      />
                     </div>
                   );
                 })}
@@ -140,7 +146,7 @@ class App extends Component {
                   </div>
                 </div>
               </div>
-            )*/}
+            )}
           </div>
         </>
       );

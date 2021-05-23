@@ -53,4 +53,11 @@ p {
   max-height: "100%";
   min-width: "200px";
   min-height: "50%";
+  border-radius: 20px !important;
+  padding: 1.25rem 1.25rem 1.25rem 1.5rem !important;
+}
+
+.input-update {
+  background: transparent !important;
+  border: none !important;
 }

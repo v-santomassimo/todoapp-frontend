@@ -40,14 +40,13 @@ class Navbar extends Component {
     ];
 
     const giorni = [
-      " ",
+      "Domenica",
       "Lunedi",
       "Martedi",
       "Mercoledi",
       "Giovedi",
       "Venerdi",
       "Sabato",
-      "Domenica",
     ];
 
     todayDate =
