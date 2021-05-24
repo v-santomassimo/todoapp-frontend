@@ -35,10 +35,6 @@ class Item extends Component {
       completed: this.state.todo.completed,
     };
 
-    // this.setState({
-    //   todo: { ...this.state.todo, updatedTodo },
-    // });
-
     this.setState({
       todo: {
         ...this.state.todo,
@@ -81,6 +77,7 @@ class Item extends Component {
             : "notification is-warning is-light"
         }
         onDoubleClick={!this.state.onModify ? this.handleToggle : () => {}}
+        title="Clicca due volte se hai completato il To Do!"
       >
         <div className="buttons is-grouped is-right">
           {this.state.todo.completed && !this.state.onModify ? (
@@ -94,12 +91,14 @@ class Item extends Component {
           {!this.state.onModify ? (
             <>
               <button
+                title="Modifica"
                 onClick={this.handleEdit}
                 className="button is-primary is-outlined is-rounded is-small"
               >
                 <FontAwesomeIcon icon={faEdit} size="lg" />
               </button>
               <button
+                title="Elimina To Do"
                 className="button is-danger is-outlined is-rounded is-small"
                 onClick={() => this.props.onDelete(this.props.todo.id)}
               >
@@ -109,12 +108,14 @@ class Item extends Component {
           ) : (
             <>
               <button
+                title="Annulla"
                 onClick={this.handleEdit}
                 className="button is-info is-outlined is-rounded is-small"
               >
                 <FontAwesomeIcon icon={faArrowLeft} size="lg" />
               </button>
               <button
+                title="Salva"
                 form="updateForm"
                 className="button is-primary is-outlined is-rounded is-small"
                 type="submit"
@@ -137,6 +138,7 @@ class Item extends Component {
           ) : (
             <form id="updateForm" onSubmit={this.handleUpdate}>
               <input
+                title="Clicca per scrivere..."
                 className="input-update input is-rounded is-small"
                 type="text"
                 placeholder="Clicca per scrivere..."

@@ -68,6 +68,7 @@ class App extends Component {
           <div className="container">
             {/*Button che apre il popup per aggiungere To Dos*/}
             <button
+              title="Aggiungi un To Do"
               className="button is-primary is-rounded"
               value="Click to Open Popup"
               onClick={this.handleShow}
