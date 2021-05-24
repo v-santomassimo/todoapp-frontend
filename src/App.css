@@ -55,6 +55,7 @@ p {
   min-height: "50%";
   border-radius: 20px !important;
   padding: 1.25rem 1.25rem 1.25rem 1.5rem !important;
+  box-shadow: 0 8px 6px -6px rgb(184, 181, 181) !important;
 }
 
 .input-update {
