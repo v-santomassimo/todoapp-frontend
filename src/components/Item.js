@@ -28,14 +28,26 @@ class Item extends Component {
 
   handleUpdate = (event) => {
     event.preventDefault(); //evita il comportamento di default di un evento;
+    let updatedTodo = {
+      id: this.state.todo.id,
+      description: this.state.updateDescription,
+      creationDate: this.state.todo.creationDate,
+      completed: this.state.todo.completed,
+    };
+
+    // this.setState({
+    //   todo: { ...this.state.todo, updatedTodo },
+    // });
+
     this.setState({
       todo: {
         ...this.state.todo,
         description: this.state.updateDescription,
       },
     });
+
     axios
-      .put("http://localhost:8080/vsan/todo-app/update", this.state.todo)
+      .put("http://localhost:8080/vsan/todo-app/update", updatedTodo)
       .then((response) => {
         this.setState({ onModify: false });
       });
@@ -64,14 +76,14 @@ class Item extends Component {
     return (
       <div
         className={
-          this.state.todo.completed
+          this.state.todo.completed && !this.state.onModify
             ? "notification is-primary is-light"
             : "notification is-warning is-light"
         }
-        onDoubleClick={this.handleToggle}
+        onDoubleClick={!this.state.onModify ? this.handleToggle : () => {}}
       >
         <div className="buttons is-grouped is-right">
-          {this.state.todo.completed ? (
+          {this.state.todo.completed && !this.state.onModify ? (
             <h6 className="mr-5">
               <FontAwesomeIcon icon={faThumbsUp} className="mx-2" size="lg" />
               Completato!

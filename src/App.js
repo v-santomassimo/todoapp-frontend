@@ -123,7 +123,7 @@ class App extends Component {
                 </Modal.Card.Footer>
               </Modal.Card>
             </Modal>
-            {/* Se non ci sono To Dos, mostro un messaggio:(però non funziona)} */}
+            {/* Se non ci sono To Dos, mostro un messaggio:} */}
             {this.state.items.length > 0 ? (
               <div className="row">
                 {this.state.items.map((item, index) => {
@@ -139,10 +139,10 @@ class App extends Component {
                 })}
               </div>
             ) : (
-              <div className="level">
+              <div className="level mt-3">
                 <div className="level-item is-centered">
-                  <div className="tag is-danger is-light is-rounded is-large">
-                    <h1>Ops...Non ci sono elementi!</h1>
+                  <div className="tag is-warning is-light is-rounded is-large">
+                    <h1>Ops...Non ci sono elementi! Aggiungi un To Do!</h1>
                   </div>
                 </div>
               </div>
