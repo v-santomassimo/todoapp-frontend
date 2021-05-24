@@ -65,7 +65,7 @@ class App extends Component {
           {/*NAVBAR*/}
           <Navbar />
 
-          <div className="container">
+          <div className="container style mb-6">
             {/*Button che apre il popup per aggiungere To Dos*/}
             <button
               title="Aggiungi un To Do"
