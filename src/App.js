@@ -29,7 +29,10 @@ class App extends Component {
     const newItem = { description: this.state.description };
 
     axios
-      .post("http://localhost:8080/vsan/todo-app/addToDo", newItem)
+      .post(
+        "https://todo-app-fullstack-vsan.azurewebsites.net/vsan/todo-app/addToDo",
+        newItem
+      )
       .then((response) => {
         console.log(response);
         console.log(response.data);
@@ -43,7 +46,10 @@ class App extends Component {
 
   handleDelete = (todoId) => {
     axios
-      .delete("http://localhost:8080/vsan/todo-app/deleteToDo/" + todoId)
+      .delete(
+        "https://todo-app-fullstack-vsan.azurewebsites.net/vsan/todo-app/deleteToDo/" +
+          todoId
+      )
       .then((response) => console.log(response.data));
 
     const items = this.state.items.filter((t) => t.id !== todoId);
@@ -52,7 +58,9 @@ class App extends Component {
 
   componentDidMount = () => {
     axios
-      .get("http://localhost:8080/vsan/todo-app/todo")
+      .get(
+        "https://todo-app-fullstack-vsan.azurewebsites.net/vsan/todo-app/todo"
+      )
       .then((response) =>
         this.setState({ items: response.data, isLoaded: true })
       );

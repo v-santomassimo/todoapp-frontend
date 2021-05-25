@@ -43,7 +43,10 @@ class Item extends Component {
     });
 
     axios
-      .put("http://localhost:8080/vsan/todo-app/update", updatedTodo)
+      .put(
+        "https://todo-app-fullstack-vsan.azurewebsites.net/vsan/todo-app/update",
+        updatedTodo
+      )
       .then((response) => {
         this.setState({ onModify: false });
       });
@@ -63,7 +66,8 @@ class Item extends Component {
 
     axios
       .get(
-        "http://localhost:8080/vsan/todo-app/completed/" + this.state.todo.id
+        "https://todo-app-fullstack-vsan.azurewebsites.net/vsan/todo-app/completed/" +
+          this.state.todo.id
       )
       .then((response) => console.log(response.data));
   };
