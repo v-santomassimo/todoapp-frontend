@@ -137,9 +137,9 @@ class Item extends Component {
             </>
           ) : (
             <form id="updateForm" onSubmit={this.handleUpdate}>
-              <input
+              <textarea
                 title="Clicca per scrivere..."
-                className="input-update input is-rounded is-small"
+                className="input-update textarea"
                 type="text"
                 placeholder="Clicca per scrivere..."
                 onChange={this.handleChange}

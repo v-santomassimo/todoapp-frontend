@@ -61,6 +61,9 @@ p {
 .input-update {
   background: transparent !important;
   border: none !important;
+  border-radius: 20px !important;
+  font-family: "Montserrat", sans-serif;
+  color: #947600 !important;
 }
 
 .style {
