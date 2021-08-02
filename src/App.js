@@ -30,7 +30,7 @@ class App extends Component {
 
     axios
       .post(
-        "https://todo-app-fullstack-vsan.azurewebsites.net/vsan/todo-app/addToDo",
+        "https://secret-headland-63564.herokuapp.com/vsan/todo-app/addToDo",
         newItem
       )
       .then((response) => {
@@ -47,7 +47,7 @@ class App extends Component {
   handleDelete = (todoId) => {
     axios
       .delete(
-        "https://todo-app-fullstack-vsan.azurewebsites.net/vsan/todo-app/deleteToDo/" +
+        "https://secret-headland-63564.herokuapp.com/vsan/todo-app/deleteToDo/" +
           todoId
       )
       .then((response) => console.log(response.data));
@@ -58,9 +58,7 @@ class App extends Component {
 
   componentDidMount = () => {
     axios
-      .get(
-        "https://todo-app-fullstack-vsan.azurewebsites.net/vsan/todo-app/todo"
-      )
+      .get("https://secret-headland-63564.herokuapp.com/vsan/todo-app/todo")
       .then((response) =>
         this.setState({ items: response.data, isLoaded: true })
       );

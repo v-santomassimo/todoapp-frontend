@@ -44,7 +44,7 @@ class Item extends Component {
 
     axios
       .put(
-        "https://todo-app-fullstack-vsan.azurewebsites.net/vsan/todo-app/update",
+        "https://secret-headland-63564.herokuapp.com/vsan/todo-app/update",
         updatedTodo
       )
       .then((response) => {
@@ -66,7 +66,7 @@ class Item extends Component {
 
     axios
       .get(
-        "https://todo-app-fullstack-vsan.azurewebsites.net/vsan/todo-app/completed/" +
+        "https://secret-headland-63564.herokuapp.com/vsan/todo-app/completed/" +
           this.state.todo.id
       )
       .then((response) => console.log(response.data));
